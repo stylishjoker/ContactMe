@@ -1,0 +1,236 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+#root {
+  width: 100vw;
+  height: 100vh;
+  background-color: black;
+  position: relative;
+}
+
+.content {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 30px;
+  font-family: monospace;
+  letter-spacing: 20px;
+  width: max-content;
+}
+
+#svg {
+  position: relative;
+  z-index: -1;
+}
+.ellipse:nth-child(2n) {
+  filter: blur(5px);
+}
+.line {
+  opacity: 0.5;
+}
+/* flip */
+.container {
+  position: absolute;
+  top: calc(50% - 175.5px);
+  right: calc(50% - 300px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* min-height: 90vh; */
+  color: #000;
+  z-index: 1000000000;
+  background-color: white;
+}
+.flip-container {
+  perspective: 1000px;
+}
+.front {
+  /* background-image: url(assets/logo.png); */
+  background-color: #000;
+  background-size: cover;
+  box-shadow: 0 15px 25px rgba(0, 0, 0, 0.5);
+  transform: rotateY(0deg);
+  z-index: 2;
+  position: relative;
+}
+.back {
+  /* background-image: url(assets/logo.png); */
+  background-size: cover;
+  /* background-color: #000; */
+  box-shadow: 0 15px 25px rgba(0, 0, 0, 0.5);
+  transform: rotateY(180deg);
+  display: flex;
+}
+.flip-container,
+.back,
+.front {
+  width: 600px;
+  height: 350px;
+}
+.flip-container:hover .flipper {
+  transform: rotateY(180deg);
+  cursor: pointer;
+}
+
+.flipper {
+  transition: 0.5s;
+  position: relative;
+  transform-style: preserve-3d;
+}
+.back,
+.front {
+  backface-visibility: hidden;
+  position: absolute;
+}
+.flip-container h1 {
+  color: #000;
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+  margin-left: 10%;
+  line-height: 90%;
+  margin-top: 5%;
+}
+.flip-container p {
+  color: #000;
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+  margin-left: 10%;
+  line-height: 90%;
+  font-size: 16px;
+  padding-top: 15px;
+  width: 35%;
+  border-bottom: 2px solid #000;
+}
+.flip-container .icons {
+  color: #000;
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+  margin-left: 10%;
+  line-height: 90%;
+}
+.bold {
+  font-weight: bold;
+}
+.icons {
+  margin-top: 25px;
+}
+.icon-group {
+  margin-top: 8px;
+}
+.back .icons span,
+.back .icons a {
+  font-size: 16px;
+  text-decoration: none;
+}
+.back .icons a:hover {
+  color: #3f3f3f;
+}
+.back .icon-box {
+  position: relative;
+  color: #000;
+  font-size: 24px;
+  /* height: 35px;
+  width: 35px; */
+  padding: 5px 7px;
+  top: 75px;
+  left: 10%;
+  display: inline-block;
+  border: 2px solid #000;
+  cursor: pointer;
+  text-align: center;
+  transition: all 0.5s ease;
+}
+
+.back .icon-box:hover {
+  box-shadow: inset 0 50px 0 0 #000;
+  color: #fff;
+}
+.icon-box i {
+  margin-top: 5px;
+}
+
+.front {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.front-bg img {
+  width: 150px;
+  height: auto;
+}
+.back-bg {
+  display: flex;
+  flex-direction: column;
+  width: 20%;
+  background-color: #000;
+  justify-content: center;
+  align-items: center;
+}
+.back-bg img {
+  width: 100px;
+  height: auto;
+}
+.back-content {
+  width: 80%;
+  position: relative;
+}
+.avatar {
+  position: absolute;
+  top: 15%;
+  right: 15%;
+  background: url(assets/logo.png);
+  background-size: cover;
+  width: 7vw;
+  height: 7vh;
+}
+.avatar:hover .back-content {
+  /* transform: scale(1.5, 1.5); */
+  background-color: red;
+}
+
+.back-bg::after {
+  content: "";
+  background: url(assets/logo.png) center center / cover no-repeat;
+  background-size: cover;
+  background-position: center;
+  width: 40px;
+  height: auto;
+  top: 0;
+  right: 0;
+}
+/* span {
+  opacity: 0;
+  animation: show_content 2s ease-in-out 1 forwards;
+}
+span:nth-child(2) {
+  animation-delay: 1s;
+}
+span:nth-child(3) {
+  animation-delay: 2s;
+}
+span:nth-child(4) {
+  animation-delay: 3s;
+} */
+@keyframes show_content {
+  0% {
+    opacity: 0;
+    filter: blur(33px);
+  }
+  100% {
+    opacity: 1;
+    filter: blur(0px);
+  }
+}
+.back-conent h1 {
+  font-size: 25px;
+  -webkit-text-stroke: 2px #000;
+  color: white;
+  text-transform: uppercase;
+}
+.flip-container:hover .back-conent h1 {
+  opacity: 0;
+  animation: show_content 0.9s ease-in-out 1 forwards;
+
+  /* text-transform: uppercase; */
+}
